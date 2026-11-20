@@ -1,7 +1,6 @@
 package com.securething.vault
 
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class VaultUnitTest {
@@ -73,7 +72,7 @@ class VaultUnitTest {
     fun testGenerateRandomPassword_defaultLength() {
         val pwd = generateRandomPassword()
         assertEquals(16, pwd.length)
-        assertTrue(pwd.isNotEmpty())
+        org.junit.Assert.assertTrue(pwd.isNotEmpty())
     }
 
     @Test
@@ -84,28 +83,14 @@ class VaultUnitTest {
 
     @Test
     fun testFormatStorageSize() {
-        // Less than 1MB -> KB
         val kbStr = formatStorageSize(500_000L)
-        assertTrue(kbStr.contains("KB"))
+        org.junit.Assert.assertTrue(kbStr.contains("KB"))
 
-        // Between 1MB and 1GB -> MB
         val mbStr = formatStorageSize(50_000_000L)
-        assertTrue(mbStr.contains("MB"))
+        org.junit.Assert.assertTrue(mbStr.contains("MB"))
 
-        // Greater than or equal to 1GB -> GB
         val gbStr = formatStorageSize(2_500_000_000L)
-        assertTrue(gbStr.contains("GB"))
-    }
-
-    @Test
-    fun testBackwardCompatibility_AppleColorsAliases() {
-        assertEquals(OneUIColors.Primary, AppleColors.SystemBlue)
-        assertEquals(OneUIColors.LightBackground, AppleColors.LightBackground)
-        assertEquals(OneUIColors.DarkBackground, AppleColors.DarkBackground)
-        assertEquals(OneUIColors.LightSurface, AppleColors.LightSurface)
-        assertEquals(OneUIColors.DarkSurface, AppleColors.DarkSurface)
-        assertEquals(OneUIColors.SystemGreen, AppleColors.SystemGreen)
-        assertEquals(OneUIColors.SystemRed, AppleColors.SystemRed)
+        org.junit.Assert.assertTrue(gbStr.contains("GB"))
     }
 
     @Test

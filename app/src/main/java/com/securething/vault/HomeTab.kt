@@ -73,33 +73,33 @@ data class NCThemeColors(
     val isDark     : Boolean
 )
 
-// Samsung One UI Dark Theme — Pure AMOLED Black Canvas with Clean Focus Blocks
+// Skeuomorphic dark — anodized gunmetal + brass
 val DarkNCTheme = NCThemeColors(
     Bg         = Color(0xFF000000),
     Surface    = Color(0xFF1C1C1E),
-    SurfaceHi  = Color(0xFF26262A),
-    SurfacePop = Color(0xFF16253B),
-    Border     = Color(0xFF2C2C2E),
-    BorderGlow = Color(0xFF3E91FF).copy(alpha = 0.25f),
+    SurfaceHi  = Color(0xFF2C2C2E),
+    SurfacePop = Color(0xFF3A3A3C),
+    Border     = Color(0xFF38383A),
+    BorderGlow = Color(0xFF48484A),
     TextPri    = Color(0xFFFFFFFF),
-    TextSec    = Color(0xFF9E9E9E),
-    TextMut    = Color(0xFF5A5A5E),
-    TextHint   = Color(0xFF3A3A3E),
+    TextSec    = Color(0xFF8E8E93),
+    TextMut    = Color(0xFF48484A),
+    TextHint   = Color(0xFF2C2C2E),
     isDark     = true
 )
 
-// Samsung One UI Light Theme — Clean Canvas (#FAFAFA) with Distinct Focus Blocks (#FFFFFF)
+// iOS Light — clean white system
 val LightNCTheme = NCThemeColors(
-    Bg         = Color(0xFFFAFAFA),
+    Bg         = Color(0xFFFFFFFF),
     Surface    = Color(0xFFFFFFFF),
-    SurfaceHi  = Color(0xFFF2F4F7),
-    SurfacePop = Color(0xFFEBF3FE),
-    Border     = Color(0xFFE5E7EB),
-    BorderGlow = Color(0xFF0381FE).copy(alpha = 0.2f),
-    TextPri    = Color(0xFF111111),
-    TextSec    = Color(0xFF767676),
-    TextMut    = Color(0xFF9CA3AF),
-    TextHint   = Color(0xFFD1D5DB),
+    SurfaceHi  = Color(0xFFF2F2F7),
+    SurfacePop = Color(0xFFE5E5EA),
+    Border     = Color(0xFFC6C6C8),
+    BorderGlow = Color(0xFFAEAEB2),
+    TextPri    = Color(0xFF000000),
+    TextSec    = Color(0xFF3C3C43),
+    TextMut    = Color(0xFFAEAEB2),
+    TextHint   = Color(0xFFD1D1D6),
     isDark     = false
 )
 
@@ -111,34 +111,34 @@ val LocalNCTheme = compositionLocalOf { DarkNCTheme }
 // ============================================================================
 // ============================================================================
 
-/** Primary One UI Focus Block surface — #FFFFFF (light) / #1C1C1E (dark) */
+/** Primary card surface — white (light) / elevated dark */
 fun raisedBrush(isDark: Boolean) = Brush.verticalGradient(
-    if (isDark) listOf(Color(0xFF1C1C1E), Color(0xFF1C1C1E))
-    else        listOf(Color(0xFFFFFFFF), Color(0xFFFFFFFF))
+    if (isDark) listOf(Color(0xFF2C2C2E), Color(0xFF1C1C1E))
+    else        listOf(Color(0xFFFFFFFF), Color(0xFFFAFAFC))
 )
 
-/** Elevated surface / container */
+/** Inset field background — grouped cell style */
 fun recessedBrush(isDark: Boolean) = Brush.verticalGradient(
-    if (isDark) listOf(Color(0xFF26262A), Color(0xFF222225))
-    else        listOf(Color(0xFFF2F4F7), Color(0xFFECEFF3))
+    if (isDark) listOf(Color(0xFF1C1C1E), Color(0xFF141416))
+    else        listOf(Color(0xFFEFEFF4), Color(0xFFF2F2F7))
 )
 
-/** Grouped Focus Block card background */
+/** Grouped section background — iOS table view header feel */
 fun metalBrush(isDark: Boolean) = Brush.verticalGradient(
-    if (isDark) listOf(Color(0xFF1C1C1E), Color(0xFF1C1C1E))
-    else        listOf(Color(0xFFFFFFFF), Color(0xFFFFFFFF))
+    if (isDark) listOf(Color(0xFF2C2C2E), Color(0xFF1C1C1E))
+    else        listOf(Color(0xFFFFFFFF), Color(0xFFF9F9FB))
 )
 
-/** One UI border — subtle hairline */
+/** iOS separator border — hairline */
 fun bevelBorder(isDark: Boolean) = BorderStroke(
-    1.dp,
-    if (isDark) Color(0xFF2C2C2E) else Color(0xFFE5E7EB)
+    0.5.dp,
+    if (isDark) Color(0xFF38383A) else Color(0xFFC6C6C8)
 )
 
-/** One UI container border */
+/** iOS inset field border — subtle */
 fun insetBorder(isDark: Boolean) = BorderStroke(
-    1.dp,
-    if (isDark) Color(0xFF26262A) else Color(0xFFE5E7EB)
+    0.5.dp,
+    if (isDark) Color(0xFF2C2C2E) else Color(0xFFD1D1D6)
 )
 
 
@@ -147,35 +147,35 @@ fun insetBorder(isDark: Boolean) = BorderStroke(
 // ============================================================================
 
 object NC {
-    // Samsung One UI Color Palette
-    val Cyan     = Color(0xFF00B2FE)  // One UI Cyan
-    val Violet   = Color(0xFF7B61FF)  // One UI Purple
-    val Pink     = Color(0xFFFF2D55)  // One UI Pink
-    val Green    = Color(0xFF22C55E)  // One UI Green
-    val GreenDim = Color(0xFF16A34A)
-    val Amber    = Color(0xFFFF9F0A)  // One UI Amber / Warning
-    val Red      = Color(0xFFF04438)  // One UI Red / Danger
+    // iOS system colors
+    val Cyan     = Color(0xFF5AC8FA)  // iOS teal
+    val Violet   = Color(0xFFAF52DE)  // iOS purple
+    val Pink     = Color(0xFFFF2D55)  // iOS pink
+    val Green    = Color(0xFF34C759)  // iOS green
+    val GreenDim = Color(0xFF248A3D)
+    val Amber    = Color(0xFFFF9500)  // iOS orange
+    val Red      = Color(0xFFFF3B30)  // iOS red
 
-    // One UI Vibrant Blue — Primary Accent
-    val Blue      = Color(0xFF0381FE)  // One UI Vibrant Blue
-    val BlueDark  = Color(0xFF0072DE)  // One UI Primary Dark
-    val Gold      = Color(0xFF0381FE)  // mapped to Blue
-    val GoldLight = Color(0xFF3E91FF)  // One UI Active Light
-    val GoldDark  = Color(0xFF0072DE)
-    val Brass     = Color(0xFF0381FE)
-    val Copper    = Color(0xFF22C55E)
+    // iOS Blue — primary accent
+    val Blue      = Color(0xFF007AFF)  // iOS system blue
+    val BlueDark  = Color(0xFF0055C1)
+    val Gold      = Color(0xFF007AFF)  // mapped to Blue for compatibility
+    val GoldLight = Color(0xFF0A84FF)
+    val GoldDark  = Color(0xFF0055C1)
+    val Brass     = Color(0xFF007AFF)
+    val Copper    = Color(0xFF34C759)
 
     fun accentFor(type: String) = when (type) {
         "photo" -> Cyan; "video" -> Violet; "audio" -> Green; else -> Amber
     }
 
     fun gradientFor(type: GalleryType): Brush = when (type) {
-        GalleryType.ALL       -> Brush.linearGradient(listOf(Color(0xFF0381FE), Color(0xFF3E91FF)))
-        GalleryType.IMAGES    -> Brush.linearGradient(listOf(Cyan, Color(0xFF0381FE)))
-        GalleryType.VIDEOS    -> Brush.linearGradient(listOf(Violet, Color(0xFF6366F1)))
-        GalleryType.AUDIO     -> Brush.linearGradient(listOf(Green, Color(0xFF16A34A)))
-        GalleryType.FILES     -> Brush.linearGradient(listOf(Amber, Color(0xFFF59E0B)))
-        GalleryType.FAVORITES -> Brush.linearGradient(listOf(Pink, Color(0xFFE11D48)))
+        GalleryType.ALL       -> Brush.linearGradient(listOf(Color(0xFF007AFF), Color(0xFF0A84FF)))
+        GalleryType.IMAGES    -> Brush.linearGradient(listOf(Cyan, Color(0xFF2878A8)))
+        GalleryType.VIDEOS    -> Brush.linearGradient(listOf(Violet, Color(0xFF4A2E78)))
+        GalleryType.AUDIO     -> Brush.linearGradient(listOf(Green, Color(0xFF2A6040)))
+        GalleryType.FILES     -> Brush.linearGradient(listOf(Amber, Color(0xFF7A5010)))
+        GalleryType.FAVORITES -> Brush.linearGradient(listOf(Pink, Color(0xFF883050)))
     }
 
     fun iconFor(type: String): ImageVector = when (type) {
@@ -587,22 +587,22 @@ fun HomeScreen(
         contentPadding = PaddingValues(bottom = 200.dp)
     ) {
         item {
-            HomeTopBar(modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 24.dp, bottom = 10.dp))
+            HomeTopBar(modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 8.dp))
         }
         item {
             VaultHeaderCard(
                 vaultBytes    = vaultBytes,
                 deviceStorage = deviceStorage,
                 appData       = appData,
-                modifier      = Modifier.padding(horizontal = 24.dp, vertical = 6.dp)
+                modifier      = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
             )
         }
-        item { SkeuSectionHeader("Categories", modifier = Modifier.padding(start = 24.dp, top = 24.dp, bottom = 12.dp)) }
+        item { SkeuSectionHeader("Browse", modifier = Modifier.padding(start = 20.dp, top = 28.dp, bottom = 14.dp)) }
         item {
             GalleryCategoryGrid(
                 appData    = appData,
                 onNavigate = onNavigate,
-                modifier   = Modifier.padding(horizontal = 24.dp)
+                modifier   = Modifier.padding(horizontal = 16.dp)
             )
         }
         if (recentFiles.isNotEmpty()) {
@@ -611,12 +611,12 @@ fun HomeScreen(
                     label    = "Recent",
                     action   = "See all",
                     onAction = { onNavigate(GalleryType.ALL) },
-                    modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 24.dp, bottom = 12.dp)
+                    modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 28.dp, bottom = 14.dp)
                 )
             }
             item {
                 LazyRow(
-                    contentPadding        = PaddingValues(horizontal = 24.dp),
+                    contentPadding        = PaddingValues(horizontal = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     items(recentFiles, key = { it.id }) { file ->
@@ -655,7 +655,7 @@ fun HomeScreen(
             QuickStatsRow(
                 appData       = appData,
                 deviceStorage = deviceStorage,
-                modifier      = Modifier.padding(horizontal = 24.dp, vertical = 20.dp)
+                modifier      = Modifier.padding(horizontal = 16.dp, vertical = 28.dp)
             )
         }
     }
@@ -667,35 +667,38 @@ fun HomeScreen(
 
 @Composable
 fun HomeTopBar(modifier: Modifier = Modifier) {
-    val t = LocalNCTheme.current
+    val t    = LocalNCTheme.current
     Row(
         modifier              = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment     = Alignment.CenterVertically
     ) {
-        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
+            // Engraved label above title
             Text(
-                "My files",
-                color         = t.TextPri,
-                fontSize      = 34.sp,
-                fontWeight    = FontWeight.Light,
+                "SECURE VAULT",
+                color         = NC.Blue.copy(.65f),
+                fontSize      = 9.sp,
+                fontWeight    = FontWeight.ExtraBold,
+                letterSpacing = 3.sp,
+                fontFamily    = FontFamily.Monospace
+            )
+            Text(
+                "My Files",
+                color      = t.TextPri,
+                fontSize   = 28.sp,
+                fontWeight = FontWeight.Bold,
                 letterSpacing = (-0.5).sp
             )
-            Text(
-                "Encrypted Vault",
-                color         = NC.Blue,
-                fontSize      = 14.sp,
-                fontWeight    = FontWeight.Medium
-            )
         }
-        // One UI Shield Icon Container
+        // Brass badge button
         Box(
             Modifier
-                .size(48.dp)
-                .background(NC.Blue.copy(alpha = 0.12f), CircleShape),
+                .size(44.dp)
+                .background(NC.Blue.copy(.12f), CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Icon(Lucide.ShieldCheck, null, tint = NC.Blue, modifier = Modifier.size(24.dp))
+            Icon(Lucide.ShieldCheck, null, tint = NC.Blue, modifier = Modifier.size(22.dp))
         }
     }
 }
@@ -707,14 +710,27 @@ fun HomeTopBar(modifier: Modifier = Modifier) {
 @Composable
 fun SkeuSectionHeader(text: String, modifier: Modifier = Modifier) {
     val t = LocalNCTheme.current
-    Text(
-        text       = text,
-        color      = t.TextPri,
-        fontSize   = 18.sp,
-        fontWeight = FontWeight.SemiBold,
-        letterSpacing = 0.sp,
-        modifier   = modifier
-    )
+    Column(modifier) {
+        Text(
+            text,
+            color      = t.TextPri,
+            fontSize   = 16.sp,
+            fontWeight = FontWeight.Bold,
+            letterSpacing = 0.2.sp,
+            style      = TextStyle(
+                shadow = Shadow(Color.Black.copy(.5f), Offset(0f, 1.5f), 3f)
+            )
+        )
+        Spacer(Modifier.height(3.dp))
+        // Engraved underline
+        Box(
+            Modifier.width(28.dp).height(1.5.dp)
+                .background(
+                    Brush.horizontalGradient(listOf(NC.Blue, NC.Cyan, Color.Transparent)),
+                    RoundedCornerShape(1.dp)
+                )
+        )
+    }
 }
 
 // Kept for backward compat
@@ -751,15 +767,16 @@ fun SkeuSectionHeaderWithAction(
         verticalAlignment     = Alignment.CenterVertically
     ) {
         SkeuSectionHeader(label)
-        // One UI Pill Action Button
+        // Small raised pill button
         Box(
             Modifier
-                .shadow(1.dp, RoundedCornerShape(20.dp), spotColor = Color.Black.copy(.1f))
-                .background(if (t.isDark) Color(0xFF16253B) else Color(0xFFEBF3FE), RoundedCornerShape(20.dp))
+                .shadow(2.dp, RoundedCornerShape(8.dp), spotColor = Color.Black.copy(.4f))
+                .background(raisedBrush(t.isDark), RoundedCornerShape(8.dp))
+                .border(bevelBorder(t.isDark), RoundedCornerShape(8.dp))
                 .clickable { onAction() }
-                .padding(horizontal = 14.dp, vertical = 6.dp)
+                .padding(horizontal = 12.dp, vertical = 5.dp)
         ) {
-            Text(action, color = aColor, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text(action, color = aColor, fontSize = 13.sp, fontWeight = FontWeight.Medium)
         }
     }
 }
@@ -819,19 +836,23 @@ fun VaultHeaderCard(
     val deviceFreeStr = formatStorageSize(deviceStorage.freeBytes)
     val deviceTotalStr= formatStorageSize(deviceStorage.totalBytes)
 
-    // One UI Focus Block (26dp corner radius)
+    // Outer panel — riveted metal look
     Box(
         modifier
             .fillMaxWidth()
-            .shadow(2.dp, RoundedCornerShape(26.dp), spotColor = Color.Black.copy(.08f))
-            .background(t.Surface, RoundedCornerShape(26.dp))
-            .border(bevelBorder(t.isDark), RoundedCornerShape(26.dp))
+            .shadow(8.dp, RoundedCornerShape(22.dp), spotColor = Color.Black.copy(.7f))
+            .background(metalBrush(t.isDark), RoundedCornerShape(22.dp))
+            .border(bevelBorder(t.isDark), RoundedCornerShape(22.dp))
     ) {
+        // Inner inset panel
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(3.dp)
+                .background(recessedBrush(t.isDark), RoundedCornerShape(19.dp))
+                .border(insetBorder(t.isDark), RoundedCornerShape(19.dp))
+                .padding(18.dp),
+            verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
 
             // ── Row 1: file count + precision gauge ──────────────────────────
@@ -841,7 +862,7 @@ fun VaultHeaderCard(
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     // Stamped label
                     Text(
-                        "Storage summary",
+                        "VAULT CONTENTS",
                         color         = t.TextMut,
                         fontSize      = 11.sp,
                         fontWeight    = FontWeight.Medium,
@@ -1032,9 +1053,9 @@ fun VaultHeaderCard(
             // ── Type count strip — raised segments ───────────────────────────
             Row(
                 Modifier.fillMaxWidth()
-                    .shadow(3.dp, RoundedCornerShape(20.dp), spotColor = Color.Black.copy(.6f))
-                    .background(raisedBrush(t.isDark), RoundedCornerShape(20.dp))
-                    .border(bevelBorder(t.isDark), RoundedCornerShape(20.dp))
+                    .shadow(3.dp, RoundedCornerShape(14.dp), spotColor = Color.Black.copy(.6f))
+                    .background(raisedBrush(t.isDark), RoundedCornerShape(14.dp))
+                    .border(bevelBorder(t.isDark), RoundedCornerShape(14.dp))
                     .padding(vertical = 14.dp),
                 Arrangement.SpaceAround
             ) {
@@ -1145,15 +1166,23 @@ fun GalleryCategoryCard(
 
     Row(
         modifier = modifier
-            .height(68.dp)
+            .height(64.dp)
             .shadow(
-                elevation = 2.dp,
-                shape     = RoundedCornerShape(26.dp),
-                spotColor = Color.Black.copy(.06f)
+                elevation = ((1f - pressAnim.value) * 5f).dp,
+                shape     = RoundedCornerShape(14.dp),
+                spotColor = Color.Black.copy(.5f)
             )
-            .background(t.Surface, RoundedCornerShape(26.dp))
-            .border(bevelBorder(t.isDark), RoundedCornerShape(26.dp))
-            .clip(RoundedCornerShape(26.dp))
+            .background(cardBg, RoundedCornerShape(14.dp))
+            .border(
+                BorderStroke(1.dp, Brush.verticalGradient(
+                    listOf(
+                        lerp(if (t.isDark) Color(0xFF48484A) else Color(0xFFC6C6C8), if (t.isDark) Color(0xFF141416) else Color(0xFFD1D1D6), pressAnim.value),
+                        lerp(if (t.isDark) Color(0xFF1C1C1E) else Color(0xFFE5E5EA), if (t.isDark) Color(0xFF2C2C2E) else Color(0xFFE5E5EA), pressAnim.value)
+                    )
+                )),
+                RoundedCornerShape(14.dp)
+            )
+            .clip(RoundedCornerShape(14.dp))
             .clickable {
                 scope.launch {
                     pressAnim.animateTo(1f, tween(80))
@@ -1161,14 +1190,15 @@ fun GalleryCategoryCard(
                     onNavigate(type)
                 }
             }
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 14.dp),
         verticalAlignment     = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        // One UI Icon Pill Container
+        // Engraved icon well
         Box(
-            Modifier.size(38.dp)
-                .background(color.copy(alpha = 0.12f), RoundedCornerShape(20.dp)),
+            Modifier.size(34.dp)
+                .background(recessedBrush(t.isDark), RoundedCornerShape(9.dp))
+                .border(insetBorder(t.isDark), RoundedCornerShape(9.dp)),
             contentAlignment = Alignment.Center
         ) {
             Icon(type.icon, null, tint = color, modifier = Modifier.size(16.dp))
@@ -1218,18 +1248,20 @@ fun RecentFileCard(
 
     Box(
         Modifier
-            .size(width = 124.dp, height = 154.dp)
-            .shadow(2.dp, RoundedCornerShape(20.dp), spotColor = Color.Black.copy(.08f))
-            .background(t.Surface, RoundedCornerShape(20.dp))
-            .border(bevelBorder(t.isDark), RoundedCornerShape(20.dp))
-            .clip(RoundedCornerShape(20.dp))
+            .size(width = 118.dp, height = 150.dp)
+            .shadow(6.dp, RoundedCornerShape(3.dp, 3.dp, 14.dp, 14.dp), spotColor = Color.Black.copy(.6f))
+            // Outer card frame — raised
+            .background(raisedBrush(t.isDark), RoundedCornerShape(3.dp, 3.dp, 14.dp, 14.dp))
+            .border(bevelBorder(t.isDark), RoundedCornerShape(3.dp, 3.dp, 14.dp, 14.dp))
+            .clip(RoundedCornerShape(3.dp, 3.dp, 14.dp, 14.dp))
             .clickable { onClick() }
     ) {
-        // Inner preview area
+        // Inner image area — recessed
         Box(
-            Modifier.fillMaxWidth().height(106.dp)
-                .background(t.SurfaceHi, RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+            Modifier.fillMaxWidth().height(118.dp)
+                .padding(3.dp)
+                .background(recessedBrush(t.isDark), RoundedCornerShape(2.dp))
+                .clip(RoundedCornerShape(2.dp))
         ) {
             if (file.type == "photo") {
                 val bmpState = rememberAsyncThumbnail(file, 240)
@@ -1342,13 +1374,15 @@ fun QuickStatsRow(
     Box(
         modifier
             .fillMaxWidth()
-            .shadow(2.dp, RoundedCornerShape(26.dp), spotColor = Color.Black.copy(.06f))
-            .background(t.Surface, RoundedCornerShape(26.dp))
-            .border(bevelBorder(t.isDark), RoundedCornerShape(26.dp))
+            .shadow(5.dp, RoundedCornerShape(18.dp), spotColor = Color.Black.copy(.6f))
+            .background(metalBrush(t.isDark), RoundedCornerShape(18.dp))
+            .border(bevelBorder(t.isDark), RoundedCornerShape(18.dp))
     ) {
         Box(
-            Modifier.fillMaxWidth()
-                .padding(vertical = 16.dp, horizontal = 12.dp)
+            Modifier.fillMaxWidth().padding(3.dp)
+                .background(recessedBrush(t.isDark), RoundedCornerShape(15.dp))
+                .border(insetBorder(t.isDark), RoundedCornerShape(15.dp))
+                .padding(vertical = 16.dp)
         ) {
             Row(Modifier.fillMaxWidth(), Arrangement.SpaceAround, Alignment.CenterVertically) {
                 QuickStat(Lucide.Heart,       "$favs",                              "Favorites", NC.Pink)
@@ -1414,7 +1448,7 @@ fun MusicQuickRow(
     val context = LocalContext.current
 
     LazyRow(
-        contentPadding        = PaddingValues(horizontal = 24.dp),
+        contentPadding        = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(audioFiles.take(10), key = { it.id }) { file ->
@@ -1656,7 +1690,7 @@ fun MiniMusicPlayer(ctrl: MusicPlayerController, onExpand: () -> Unit, context: 
     Box(
         Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = 12.dp)
             .offset { IntOffset(swAnim.toInt(), 0) }
             .alpha(swAlpha)
             .pointerInput(Unit) {
@@ -1667,17 +1701,20 @@ fun MiniMusicPlayer(ctrl: MusicPlayerController, onExpand: () -> Unit, context: 
                 )
             }
     ) {
-        // One UI Floating Pill Player
+        // Outer metal chassis
         Box(
             Modifier.fillMaxWidth()
-                .shadow(4.dp, RoundedCornerShape(26.dp), spotColor = Color.Black.copy(.15f))
-                .background(t.Surface, RoundedCornerShape(26.dp))
-                .border(bevelBorder(t.isDark), RoundedCornerShape(26.dp))
+                .shadow(8.dp, RoundedCornerShape(16.dp), spotColor = Color.Black.copy(.7f))
+                .background(metalBrush(t.isDark), RoundedCornerShape(16.dp))
+                .border(bevelBorder(t.isDark), RoundedCornerShape(16.dp))
         ) {
+            // Inner recessed deck
             Column(
-                Modifier.fillMaxWidth()
+                Modifier.fillMaxWidth().padding(3.dp)
+                    .background(recessedBrush(t.isDark), RoundedCornerShape(13.dp))
+                    .border(insetBorder(t.isDark), RoundedCornerShape(13.dp))
                     .clickable { onExpand() }
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                    .padding(horizontal = 14.dp, vertical = 11.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Row(Modifier.fillMaxWidth(), Arrangement.SpaceBetween, Alignment.CenterVertically) {
@@ -1816,13 +1853,14 @@ fun MusicPlayerSheet(
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState       = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-        shape            = RoundedCornerShape(topStart = 26.dp, topEnd = 26.dp),
-        containerColor   = t.Surface,
+        containerColor   = t.Bg,
         dragHandle = {
             Box(
-                Modifier.padding(top = 12.dp, bottom = 8.dp)
-                    .width(36.dp).height(4.dp)
-                    .background(t.Border, RoundedCornerShape(2.dp))
+                Modifier.padding(top = 10.dp, bottom = 8.dp)
+                    .width(44.dp).height(4.dp)
+                    .shadow(1.dp, RoundedCornerShape(2.dp))
+                    .background(raisedBrush(t.isDark), RoundedCornerShape(2.dp))
+                    .border(bevelBorder(t.isDark), RoundedCornerShape(2.dp))
             )
         }
     ) {
@@ -2428,13 +2466,14 @@ fun GalleryImportSheet(
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState       = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-        shape            = RoundedCornerShape(topStart = 26.dp, topEnd = 26.dp),
-        containerColor   = t.Surface,
+        containerColor   = t.Bg,
         dragHandle = {
             Box(
-                Modifier.padding(top = 12.dp, bottom = 8.dp)
-                    .width(36.dp).height(4.dp)
-                    .background(t.Border, RoundedCornerShape(2.dp))
+                Modifier.padding(top = 10.dp, bottom = 8.dp)
+                    .width(44.dp).height(4.dp)
+                    .shadow(1.dp, RoundedCornerShape(2.dp))
+                    .background(raisedBrush(t.isDark), RoundedCornerShape(2.dp))
+                    .border(bevelBorder(t.isDark), RoundedCornerShape(2.dp))
             )
         }
     ) {
@@ -2443,7 +2482,8 @@ fun GalleryImportSheet(
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Column(Modifier.padding(bottom = 4.dp)) {
-                Text("Import files", color = NC.Blue, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                Text("IMPORT", color = NC.Blue.copy(.65f), fontSize = 9.sp,
+                    fontWeight = FontWeight.ExtraBold, letterSpacing = 3.sp, fontFamily = FontFamily.Monospace)
                 Spacer(Modifier.height(3.dp))
                 Text("Select files to secure", color = t.TextPri, fontSize = 18.sp, fontWeight = FontWeight.Bold,
                     style = TextStyle(shadow = Shadow(Color.Black.copy(.4f), Offset(0f, 1.5f), 4f)))
@@ -2463,7 +2503,7 @@ fun GalleryImportSheet(
                         val scope = rememberCoroutineScope()
                         Row(
                             modifier = Modifier.weight(1f).height(64.dp)
-                                .shadow(((1f - press.value) * 5f + 1f).dp, RoundedCornerShape(20.dp), spotColor = Color.Black.copy(.5f))
+                                .shadow(((1f - press.value) * 5f + 1f).dp, RoundedCornerShape(14.dp), spotColor = Color.Black.copy(.5f))
                                 .background(
                                     Brush.verticalGradient(
                                         if (t.isDark)
@@ -2473,12 +2513,12 @@ fun GalleryImportSheet(
                                             listOf(lerp(Color(0xFFFFFFFF), Color(0xFFF2F2F7), press.value),
                                                 lerp(Color(0xFFF9F9FB), Color(0xFFE5E5EA), press.value))
                                     ),
-                                    RoundedCornerShape(20.dp)
+                                    RoundedCornerShape(14.dp)
                                 )
                                 .border(BorderStroke(0.5.dp,
                                     if (t.isDark) Color(0xFF38383A) else Color(0xFFC6C6C8)
-                                ), RoundedCornerShape(20.dp))
-                                .clip(RoundedCornerShape(20.dp))
+                                ), RoundedCornerShape(14.dp))
+                                .clip(RoundedCornerShape(14.dp))
                                 .clickable {
                                     scope.launch {
                                         press.animateTo(1f, tween(80))
@@ -2582,9 +2622,9 @@ fun GalleryTopBar(
                     expanded         = showSortMenu,
                     onDismissRequest = { onSortSelect(sortMode) },
                     modifier         = Modifier
-                        .shadow(8.dp, RoundedCornerShape(20.dp), spotColor = Color.Black.copy(.6f))
-                        .background(metalBrush(t.isDark), RoundedCornerShape(20.dp))
-                        .border(bevelBorder(t.isDark), RoundedCornerShape(20.dp))
+                        .shadow(8.dp, RoundedCornerShape(14.dp), spotColor = Color.Black.copy(.6f))
+                        .background(metalBrush(t.isDark), RoundedCornerShape(14.dp))
+                        .border(bevelBorder(t.isDark), RoundedCornerShape(14.dp))
                 ) {
                     listOf("date" to "Date Added", "name" to "Name A–Z",
                         "size" to "File Size", "type" to "File Type").forEach { (key, label) ->
@@ -2818,17 +2858,20 @@ fun GalleryGridCell(
     val accent = NC.accentFor(file.type)
     var showOpts by remember { mutableStateOf(false) }
 
-    // One UI Grid Cell
+    // Raised frame — like a mounted slide or photo
     Box(
         Modifier.aspectRatio(1f)
-            .shadow(2.dp, RoundedCornerShape(16.dp), spotColor = Color.Black.copy(.06f))
-            .background(t.Surface, RoundedCornerShape(16.dp))
-            .border(bevelBorder(t.isDark), RoundedCornerShape(16.dp))
-            .clip(RoundedCornerShape(16.dp))
+            .shadow(4.dp, RoundedCornerShape(10.dp), spotColor = Color.Black.copy(.55f))
+            .background(raisedBrush(t.isDark), RoundedCornerShape(10.dp))
+            .border(bevelBorder(t.isDark), RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(10.dp))
     ) {
+        // Inner recessed image well (3dp inset)
         Box(
-            Modifier.fillMaxSize()
-                .clip(RoundedCornerShape(16.dp))
+            Modifier.fillMaxSize().padding(3.dp)
+                .background(recessedBrush(t.isDark), RoundedCornerShape(7.dp))
+                .border(insetBorder(t.isDark), RoundedCornerShape(7.dp))
+                .clip(RoundedCornerShape(7.dp))
                 .combinedClickable(onClick = onClick, onLongClick = { showOpts = !showOpts })
         ) {
             when (file.type) {
@@ -3007,9 +3050,9 @@ fun GalleryListRow(
 
     Box(
         Modifier.fillMaxWidth()
-            .shadow(2.dp, RoundedCornerShape(20.dp), spotColor = Color.Black.copy(.06f))
-            .background(t.Surface, RoundedCornerShape(20.dp))
-            .clip(RoundedCornerShape(20.dp))
+            .shadow(3.dp, RoundedCornerShape(12.dp), spotColor = Color.Black.copy(.5f))
+            .background(raisedBrush(t.isDark), RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(12.dp))
     ) {
         // Delete reveal
         Box(
@@ -3032,9 +3075,9 @@ fun GalleryListRow(
         Row(
             modifier = Modifier.fillMaxWidth()
                 .offset { IntOffset(anim.toInt(), 0) }
-                .shadow(if (anim < -10f) 0.dp else 2.dp, RoundedCornerShape(20.dp), spotColor = Color.Black.copy(.06f))
-                .background(t.Surface, RoundedCornerShape(20.dp))
-                .border(bevelBorder(t.isDark), RoundedCornerShape(20.dp))
+                .shadow(if (anim < -10f) 0.dp else 3.dp, RoundedCornerShape(12.dp), spotColor = Color.Black.copy(.5f))
+                .background(raisedBrush(t.isDark), RoundedCornerShape(12.dp))
+                .border(bevelBorder(t.isDark), RoundedCornerShape(12.dp))
                 .pointerInput(Unit) {
                     detectHorizontalDragGestures(
                         onDragEnd    = {
@@ -3170,13 +3213,15 @@ fun NeoMediaViewerDialog(
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         Box(
             Modifier.fillMaxWidth(.96f).fillMaxHeight(.93f)
-                .shadow(8.dp, RoundedCornerShape(26.dp), spotColor = Color.Black.copy(.2f))
-                .background(t.Surface, RoundedCornerShape(26.dp))
-                .border(bevelBorder(t.isDark), RoundedCornerShape(26.dp))
-                .clip(RoundedCornerShape(26.dp))
+                .shadow(16.dp, RoundedCornerShape(24.dp), spotColor = Color.Black.copy(.8f))
+                .background(metalBrush(t.isDark), RoundedCornerShape(24.dp))
+                .border(bevelBorder(t.isDark), RoundedCornerShape(24.dp))
         ) {
             Column(
-                Modifier.fillMaxSize()
+                Modifier.fillMaxSize().padding(3.dp)
+                    .background(recessedBrush(t.isDark), RoundedCornerShape(21.dp))
+                    .border(insetBorder(t.isDark), RoundedCornerShape(21.dp))
+                    .clip(RoundedCornerShape(21.dp))
             ) {
                 val accent = NC.accentFor(file.type)
 
@@ -3249,7 +3294,7 @@ fun NeoMediaViewerDialog(
                             .height(48.dp)
                             .shadow(
                                 elevation = ((1f - press.value) * 6f + 1f).dp,
-                                shape     = RoundedCornerShape(20.dp),
+                                shape     = RoundedCornerShape(14.dp),
                                 spotColor = Color.Black.copy(.6f)
                             )
                             .background(
@@ -3259,7 +3304,7 @@ fun NeoMediaViewerDialog(
                                         lerp(Color(0xFF007AFF), Color(0xFF0055C1), press.value)
                                     )
                                 ),
-                                RoundedCornerShape(20.dp)
+                                RoundedCornerShape(14.dp)
                             )
                             .border(
                                 BorderStroke(1.dp, Brush.verticalGradient(
@@ -3268,7 +3313,7 @@ fun NeoMediaViewerDialog(
                                         Color(0xFF007AFF).copy(.2f)
                                     )
                                 )),
-                                RoundedCornerShape(20.dp)
+                                RoundedCornerShape(14.dp)
                             )
                             .clickable(enabled = !isExporting) {
                                 scope.launch { press.animateTo(1f, tween(80)); press.animateTo(0f, spring(.5f)) }
