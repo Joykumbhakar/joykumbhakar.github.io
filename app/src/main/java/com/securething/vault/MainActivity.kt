@@ -154,53 +154,67 @@ import com.securething.vault.R
 // APPLE DESIGN SYSTEM - Color Palette
 // ============================================================================
 
-object AppleColors {
-    val verticalGradient = Brush.linearGradient(
+// ============================================================================
+// SAMSUNG ONE UI DESIGN SYSTEM - Color Palette
+// ============================================================================
+
+object OneUIColors {
+    val verticalGradient = Brush.verticalGradient(
         colors = listOf(
-            Color(0xFF059200),
-            Color(0xFFB7CDF3),
-            Color(0xFFA82800)
-        ),
-        start = Offset(0f, 0f),
-        end = Offset(0f, Float.POSITIVE_INFINITY)
+            Color(0xFF0381FE),
+            Color(0xFF0072DE)
+        )
     )
-    // Light Theme
-    val LightBackground = Color(0xFFF2F2F7)
-    val LightSurface = Color(0xFFFFFFFF)
-    val LightPrimary = Color(0xFF007AFF)
-    val LightSecondary = Color(0xFF5856D6)
-    val LightTertiary = Color(0xFFAF52DE)
+    // Primary Vibrant Blue
+    val Primary = Color(0xFF0381FE)
+    val PrimaryDark = Color(0xFF0072DE)
+    val PrimaryLight = Color(0xFF3E91FF)
+    val PrimaryContainer = Color(0xFFEBF3FE)
+    val PrimaryContainerDark = Color(0xFF16253B)
 
-    // Card backgrounds with subtle transparency
-    val LightCard = Color(0xFFFBFBFD)
-    val LightCardElevated = Color(0xFFFFFFFF)
-
-    // Text colors
-    val LightText = Color(0xFF000000)
-    val LightTextSecondary = Color(0xFF8E8E93)
-    val LightTextTertiary = Color(0xFFC7C7CC)
-
-    // Separator
-    val LightSeparator = Color(0xFFC6C6C8)
-
-    // System colors
-    val SystemBlue = Color(0xFF007AFF)
-    val SystemGreen = Color(0xFF34C759)
-    val SystemRed = Color(0xFFFF3B30)
-    val SystemOrange = Color(0xFFFF9500)
-    val SystemPurple = Color(0xFF5856D6)
-    val SystemPink = Color(0xFFFF2D55)
-    val SystemTeal = Color(0xFF5AC8FA)
-
-    // Dark Theme
+    // Canvas Backgrounds
+    val LightBackground = Color(0xFFFAFAFA)
     val DarkBackground = Color(0xFF000000)
+
+    // Focus Block Surfaces
+    val LightSurface = Color(0xFFFFFFFF)
     val DarkSurface = Color(0xFF1C1C1E)
-    val DarkCard = Color(0xFF2C2C2E)
-    val DarkCardElevated = Color(0xFF3A3A3C)
+
+    // Secondary / Elevated Surfaces
+    val LightCard = Color(0xFFFFFFFF)
+    val LightCardElevated = Color(0xFFF2F4F7)
+    val DarkCard = Color(0xFF222225)
+    val DarkCardElevated = Color(0xFF2C2C2E)
+
+    // Text hierarchy
+    val LightText = Color(0xFF111111)
+    val LightTextSecondary = Color(0xFF767676)
+    val LightTextTertiary = Color(0xFFB0B0B0)
+
     val DarkText = Color(0xFFFFFFFF)
-    val DarkTextSecondary = Color(0xFF8E8E93)
-    val DarkSeparator = Color(0xFF38383A)
+    val DarkTextSecondary = Color(0xFF9E9E9E)
+    val DarkTextTertiary = Color(0xFF5A5A5E)
+
+    // Separators
+    val LightSeparator = Color(0xFFE5E7EB)
+    val DarkSeparator = Color(0xFF2C2C2E)
+
+    // Semantic colors
+    val SystemBlue = Color(0xFF0381FE)
+    val SystemGreen = Color(0xFF22C55E)
+    val SystemRed = Color(0xFFF04438)
+    val SystemOrange = Color(0xFFFF9F0A)
+    val SystemPurple = Color(0xFF7B61FF)
+    val SystemPink = Color(0xFFFF2D55)
+    val SystemTeal = Color(0xFF00B2FE)
+
+    val LightPrimary = Primary
+    val LightSecondary = SystemPurple
+    val LightTertiary = SystemPink
 }
+
+// Backwards-compatible alias for existing code
+val AppleColors = OneUIColors
 
 // ============================================================================
 // DATA STORE EXTENSION
@@ -655,54 +669,54 @@ class MainActivity : FragmentActivity() {
 fun AppleColorScheme(isDark: Boolean): ColorScheme {
     return if (isDark) {
         darkColorScheme(
-            primary = AppleColors.SystemBlue,
+            primary = OneUIColors.PrimaryLight,
             onPrimary = Color.White,
-            primaryContainer = AppleColors.SystemBlue.copy(alpha = 0.2f),
-            onPrimaryContainer = AppleColors.SystemBlue,
+            primaryContainer = OneUIColors.PrimaryContainerDark,
+            onPrimaryContainer = OneUIColors.PrimaryLight,
 
-            secondary = AppleColors.SystemPurple,
+            secondary = OneUIColors.SystemPurple,
             onSecondary = Color.White,
-            secondaryContainer = AppleColors.SystemPurple.copy(alpha = 0.2f),
-            onSecondaryContainer = AppleColors.SystemPurple,
+            secondaryContainer = OneUIColors.SystemPurple.copy(alpha = 0.2f),
+            onSecondaryContainer = OneUIColors.SystemPurple,
 
-            background = AppleColors.DarkBackground,
-            onBackground = AppleColors.DarkText,
+            background = OneUIColors.DarkBackground,
+            onBackground = OneUIColors.DarkText,
 
-            surface = AppleColors.DarkSurface,
-            onSurface = AppleColors.DarkText,
+            surface = OneUIColors.DarkSurface,
+            onSurface = OneUIColors.DarkText,
 
-            surfaceVariant = AppleColors.DarkCard,
-            onSurfaceVariant = AppleColors.DarkTextSecondary,
+            surfaceVariant = OneUIColors.DarkCard,
+            onSurfaceVariant = OneUIColors.DarkTextSecondary,
 
-            outline = AppleColors.DarkSeparator,
+            outline = OneUIColors.DarkSeparator,
 
-            error = AppleColors.SystemRed,
+            error = OneUIColors.SystemRed,
             onError = Color.White
         )
     } else {
         lightColorScheme(
-            primary = AppleColors.SystemBlue,
+            primary = OneUIColors.Primary,
             onPrimary = Color.White,
-            primaryContainer = AppleColors.SystemBlue.copy(alpha = 0.1f),
-            onPrimaryContainer = AppleColors.SystemBlue,
+            primaryContainer = OneUIColors.PrimaryContainer,
+            onPrimaryContainer = OneUIColors.Primary,
 
-            secondary = AppleColors.SystemPurple,
+            secondary = OneUIColors.SystemPurple,
             onSecondary = Color.White,
-            secondaryContainer = AppleColors.SystemPurple.copy(alpha = 0.1f),
-            onSecondaryContainer = AppleColors.SystemPurple,
+            secondaryContainer = OneUIColors.SystemPurple.copy(alpha = 0.15f),
+            onSecondaryContainer = OneUIColors.SystemPurple,
 
-            background = AppleColors.LightBackground,
-            onBackground = AppleColors.LightText,
+            background = OneUIColors.LightBackground,
+            onBackground = OneUIColors.LightText,
 
-            surface = AppleColors.LightSurface,
-            onSurface = AppleColors.LightText,
+            surface = OneUIColors.LightSurface,
+            onSurface = OneUIColors.LightText,
 
-            surfaceVariant = AppleColors.LightCard,
-            onSurfaceVariant = AppleColors.LightTextSecondary,
+            surfaceVariant = OneUIColors.LightCardElevated,
+            onSurfaceVariant = OneUIColors.LightTextSecondary,
 
-            outline = AppleColors.LightSeparator,
+            outline = OneUIColors.LightSeparator,
 
-            error = AppleColors.SystemRed,
+            error = OneUIColors.SystemRed,
             onError = Color.White
         )
     }
@@ -999,23 +1013,23 @@ fun LaunchScreen() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Apple-style icon container
+            // One UI Focus Block Shield Container
             Box(
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(110.dp)
                     .shadow(
-                        elevation = 20.dp,
-                        shape = RoundedCornerShape(32.dp),
+                        elevation = 12.dp,
+                        shape = RoundedCornerShape(26.dp),
                         spotColor = Color.Black.copy(alpha = 0.25f)
                     )
                     .background(
-                        Color.White.copy(alpha = 0.15f),
-                        RoundedCornerShape(32.dp)
+                        Color.White.copy(alpha = 0.18f),
+                        RoundedCornerShape(26.dp)
                     )
                     .border(
                         width = 1.dp,
-                        color = Color.White.copy(alpha = 0.2f),
-                        shape = RoundedCornerShape(32.dp)
+                        color = Color.White.copy(alpha = 0.25f),
+                        shape = RoundedCornerShape(26.dp)
                     ),
                 contentAlignment = Alignment.Center
             ) {
@@ -1163,7 +1177,7 @@ fun WelcomeScreen(userName: String, onComplete: () -> Unit) {
 // ============================================================================
 
 /**
- * Apple-style Card with subtle shadow and proper elevation
+ * Samsung One UI Focus Block Card (26dp corner radius, subtle elevation)
  */
 @Composable
 fun AppleCard(
@@ -1181,13 +1195,17 @@ fun AppleCard(
         modifier = cardModifier
             .shadow(
                 elevation = 2.dp,
-                shape = RoundedCornerShape(16.dp),
-                spotColor = Color.Black.copy(alpha = 0.05f),
-                ambientColor = Color.Black.copy(alpha = 0.05f)
+                shape = RoundedCornerShape(26.dp),
+                spotColor = Color.Black.copy(alpha = 0.06f),
+                ambientColor = Color.Black.copy(alpha = 0.04f)
             ),
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(26.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
+        ),
+        border = BorderStroke(
+            0.5.dp,
+            MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
@@ -1196,7 +1214,7 @@ fun AppleCard(
 }
 
 /**
- * Apple-style Button with proper sizing and styling
+ * Samsung One UI Pill Contained Button (26dp corner radius, 50dp height, #0381FE)
  */
 @Composable
 fun AppleButton(
@@ -1204,7 +1222,7 @@ fun AppleButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     colors: ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = AppleColors.SystemBlue,
+        containerColor = OneUIColors.Primary,
         contentColor = Color.White
     ),
     content: @Composable RowScope.() -> Unit
@@ -1213,18 +1231,18 @@ fun AppleButton(
         onClick = onClick,
         modifier = modifier.height(50.dp),
         enabled = enabled,
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(26.dp),
         colors = colors,
         elevation = ButtonDefaults.buttonElevation(
             defaultElevation = 0.dp,
-            pressedElevation = 0.dp
+            pressedElevation = 2.dp
         ),
         content = content
     )
 }
 
 /**
- * Apple-style Section Header
+ * Samsung One UI Section Header (Sentence case, 15sp SemiBold, 24dp keyline margin)
  */
 @Composable
 fun AppleSectionHeader(
@@ -1232,26 +1250,26 @@ fun AppleSectionHeader(
     modifier: Modifier = Modifier
 ) {
     Text(
-        text = text.uppercase(),
-        style = MaterialTheme.typography.labelSmall.copy(
-            fontSize = 13.sp,
-            letterSpacing = 0.5.sp
+        text = text,
+        style = MaterialTheme.typography.titleSmall.copy(
+            fontSize = 15.sp,
+            letterSpacing = 0.1.sp
         ),
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        fontWeight = FontWeight.W600,
-        modifier = modifier.padding(horizontal = 20.dp, vertical = 8.dp)
+        color = OneUIColors.Primary,
+        fontWeight = FontWeight.SemiBold,
+        modifier = modifier.padding(horizontal = 24.dp, vertical = 10.dp)
     )
 }
 
 /**
- * Apple-style Divider
+ * Samsung One UI Inset Divider (24dp margins)
  */
 @Composable
 fun AppleDivider(modifier: Modifier = Modifier) {
     HorizontalDivider(
-        modifier = modifier,
-        thickness = 0.5.dp,
-        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
+        modifier = modifier.padding(horizontal = 24.dp),
+        thickness = 1.dp,
+        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f)
     )
 }
 // ============================================================================
@@ -1283,7 +1301,7 @@ fun RegisterScreen(onNext: (User) -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 24.dp)
                 .graphicsLayer(alpha = animatedProgress.value),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -1310,13 +1328,13 @@ fun RegisterScreen(onNext: (User) -> Unit) {
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "Create Your Profile",
-                style = MaterialTheme.typography.headlineLarge.copy(
-                    fontSize = 32.sp,
+                text = "Create your profile",
+                style = MaterialTheme.typography.displayMedium.copy(
+                    fontSize = 34.sp,
                     letterSpacing = (-0.5).sp
                 ),
                 color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.W700
+                fontWeight = FontWeight.Light
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -1334,7 +1352,7 @@ fun RegisterScreen(onNext: (User) -> Unit) {
             Spacer(modifier = Modifier.height(40.dp))
 
             // Gender Selection - Apple Style
-            AppleSectionHeader("SELECT GENDER")
+            AppleSectionHeader("Select gender")
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -1357,7 +1375,7 @@ fun RegisterScreen(onNext: (User) -> Unit) {
             Spacer(modifier = Modifier.height(32.dp))
 
             // Username Input
-            AppleSectionHeader("USERNAME")
+            AppleSectionHeader("Username")
 
             OutlinedTextField(
                 value = username,
@@ -1389,7 +1407,7 @@ fun RegisterScreen(onNext: (User) -> Unit) {
             Spacer(modifier = Modifier.height(32.dp))
 
             // Security Method Selection
-            AppleSectionHeader("SECURITY METHOD")
+            AppleSectionHeader("Security method")
 
             var expanded by remember { mutableStateOf(false) }
             ExposedDropdownMenuBox(
@@ -1530,24 +1548,24 @@ fun AppleGenderCard(
     Card(
         onClick = onClick,
         modifier = modifier
-            .aspectRatio(1f)
+            .aspectRatio(1.05f)
             .graphicsLayer(scaleX = scale, scaleY = scale)
             .shadow(
-                elevation = if (isSelected) 8.dp else 1.dp,
-                shape = RoundedCornerShape(20.dp),
-                spotColor = Color.Black.copy(alpha = 0.08f)
+                elevation = if (isSelected) 4.dp else 1.dp,
+                shape = RoundedCornerShape(26.dp),
+                spotColor = OneUIColors.Primary.copy(alpha = 0.15f)
             ),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(26.dp),
         colors = CardDefaults.cardColors(
             containerColor = if (isSelected)
-                AppleColors.SystemBlue.copy(alpha = 0.1f)
+                OneUIColors.Primary.copy(alpha = 0.08f)
             else
                 MaterialTheme.colorScheme.surface
         ),
         border = if (isSelected)
-            BorderStroke(2.dp, AppleColors.SystemBlue)
+            BorderStroke(2.dp, OneUIColors.Primary)
         else
-            BorderStroke(0.5.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.2f)),
+            BorderStroke(0.5.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
@@ -1560,9 +1578,9 @@ fun AppleGenderCard(
                     .size(56.dp)
                     .background(
                         if (gender == "male")
-                            AppleColors.SystemBlue.copy(alpha = 0.15f)
+                            OneUIColors.Primary.copy(alpha = 0.15f)
                         else
-                            AppleColors.SystemPink.copy(alpha = 0.15f),
+                            OneUIColors.SystemPink.copy(alpha = 0.15f),
                         CircleShape
                     ),
                 contentAlignment = Alignment.Center
@@ -1571,7 +1589,7 @@ fun AppleGenderCard(
                     imageVector = if (gender == "male") Icons.Filled.Male else Icons.Filled.Female,
                     contentDescription = gender,
                     modifier = Modifier.size(32.dp),
-                    tint = if (gender == "male") AppleColors.SystemBlue else AppleColors.SystemPink
+                    tint = if (gender == "male") OneUIColors.Primary else OneUIColors.SystemPink
                 )
             }
 
@@ -1581,11 +1599,11 @@ fun AppleGenderCard(
                 text = gender.replaceFirstChar { it.uppercase() },
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontSize = 17.sp,
-                    letterSpacing = (-0.2).sp
+                    letterSpacing = 0.sp
                 ),
-                fontWeight = FontWeight.W600,
+                fontWeight = FontWeight.SemiBold,
                 color = if (isSelected)
-                    AppleColors.SystemBlue
+                    OneUIColors.Primary
                 else
                     MaterialTheme.colorScheme.onSurface
             )
@@ -1629,7 +1647,7 @@ fun SecuritySetupScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp),
+                .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(60.dp))
@@ -1655,13 +1673,13 @@ fun SecuritySetupScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "Security Questions",
-                style = MaterialTheme.typography.headlineLarge.copy(
-                    fontSize = 32.sp,
+                text = "Security questions",
+                style = MaterialTheme.typography.displayMedium.copy(
+                    fontSize = 34.sp,
                     letterSpacing = (-0.5).sp
                 ),
                 color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.W700
+                fontWeight = FontWeight.Light
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -1683,7 +1701,7 @@ fun SecuritySetupScreen(
             AppleCard(modifier = Modifier.fillMaxWidth()) {
                 Column(modifier = Modifier.padding(20.dp)) {
                     Text(
-                        text = "QUESTION 1",
+                        text = "Question 1",
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontSize = 13.sp,
                             letterSpacing = 0.5.sp
@@ -1755,7 +1773,7 @@ fun SecuritySetupScreen(
             AppleCard(modifier = Modifier.fillMaxWidth()) {
                 Column(modifier = Modifier.padding(20.dp)) {
                     Text(
-                        text = "QUESTION 2",
+                        text = "Question 2",
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontSize = 13.sp,
                             letterSpacing = 0.5.sp
@@ -1871,6 +1889,10 @@ fun calculatePasswordStrength(password: String): Int {
 // 2. MAIN KEYBOARD COMPONENT
 // ============================================================================
 
+// ============================================================================
+// 2. SAMSUNG ONE UI KEYPAD COMPONENT
+// ============================================================================
+
 @Composable
 fun ApplePinKeyboard(
     pinInput: String,
@@ -1883,70 +1905,63 @@ fun ApplePinKeyboard(
 ) {
     val haptic = LocalHapticFeedback.current
 
-    // Adaptive theme color for Claymorphism
-    val isDark = MaterialTheme.colorScheme.surface == AppleColors.DarkSurface || MaterialTheme.colorScheme.background == AppleColors.DarkBackground
-    val baseColor = if (isDark) AppleColors.DarkCard else Color(0xFFF0F0F3)
+    val isDark = MaterialTheme.colorScheme.surface == OneUIColors.DarkSurface || MaterialTheme.colorScheme.background == OneUIColors.DarkBackground
+    val baseColor = if (isDark) OneUIColors.DarkBackground else OneUIColors.LightBackground
 
-    // Responsive Sizing
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
-    val buttonSize = if (screenHeight < 600.dp) 65.dp else 80.dp
-    val spacing = if (screenHeight < 600.dp) 16.dp else 24.dp
+    val buttonSize = if (screenHeight < 600.dp) 68.dp else 76.dp
+    val spacing = if (screenHeight < 600.dp) 16.dp else 22.dp
 
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(baseColor) // Important: Clay needs this background color context
+            .background(baseColor)
             .padding(bottom = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // --- 1. PIN Dots (Clay Style) ---
+        // --- 1. One UI PIN Indicator Dots ---
         if (showDots) {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                horizontalArrangement = Arrangement.spacedBy(22.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(bottom = 40.dp, top = 20.dp)
+                modifier = Modifier.padding(bottom = 36.dp, top = 16.dp)
             ) {
                 repeat(4) { index ->
                     val isFilled = index < pinInput.length
 
-                    // Animate color
-                    val colorAnim by animateColorAsState(
-                        targetValue = if (isFilled) AppleColors.SystemBlue else Color.Transparent,
-                        animationSpec = tween(300),
-                        label = "color"
+                    val dotColor by animateColorAsState(
+                        targetValue = if (isFilled) OneUIColors.Primary else Color.Transparent,
+                        animationSpec = tween(250),
+                        label = "dot_color"
+                    )
+
+                    val dotScale by animateFloatAsState(
+                        targetValue = if (isFilled) 1.15f else 1f,
+                        animationSpec = spring(dampingRatio = 0.6f, stiffness = 400f),
+                        label = "dot_scale"
                     )
 
                     Box(
                         modifier = Modifier
-                            .size(24.dp)
-                            // If empty -> Inset (Hole). If filled -> Flat surface
-                            .then(if (!isFilled) Modifier.clayInset(color = baseColor, borderRadius = 12.dp) else Modifier)
-                            .background(if (isFilled) baseColor else Color.Transparent, CircleShape)
-                            .padding(4.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        // The Glowing Dot
-                        if (isFilled) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    // Add a small shadow to the dot itself so it pops out
-                                    .shadow(4.dp, CircleShape, spotColor = AppleColors.SystemBlue)
-                                    .background(colorAnim, CircleShape)
+                            .size(16.dp)
+                            .graphicsLayer(scaleX = dotScale, scaleY = dotScale)
+                            .border(
+                                width = 1.5.dp,
+                                color = if (isFilled) OneUIColors.Primary else (if (isDark) Color(0xFF3A3A3C) else Color(0xFFD1D5DB)),
+                                shape = CircleShape
                             )
-                        }
-                    }
+                            .background(dotColor, CircleShape)
+                    )
                 }
             }
         }
 
-        // --- 2. Keypad Grid ---
+        // --- 2. One UI Keypad Grid ---
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(spacing)
         ) {
-            // Rows 1-3
             val rows = listOf(
                 listOf("1", "2", "3"),
                 listOf("4", "5", "6"),
@@ -1974,13 +1989,12 @@ fun ApplePinKeyboard(
                 horizontalArrangement = Arrangement.spacedBy(spacing),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Biometric Button
                 if (onBiometricClick != null) {
                     ClayKeypadButton(
                         text = "",
                         icon = Icons.Filled.Fingerprint,
                         size = buttonSize,
-                        iconColor = AppleColors.SystemBlue,
+                        iconColor = OneUIColors.Primary,
                         enabled = enabled,
                         onClick = {
                             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
@@ -1988,11 +2002,9 @@ fun ApplePinKeyboard(
                         }
                     )
                 } else {
-                    // Empty Spacer to keep alignment
                     Box(modifier = Modifier.size(buttonSize))
                 }
 
-                // 0 Button
                 ClayKeypadButton(
                     text = "0",
                     size = buttonSize,
@@ -2003,12 +2015,11 @@ fun ApplePinKeyboard(
                     }
                 )
 
-                // Delete Button
                 ClayKeypadButton(
                     text = "",
                     icon = Icons.Filled.Backspace,
                     size = buttonSize,
-                    iconColor = AppleColors.SystemRed,
+                    iconColor = OneUIColors.SystemRed,
                     isFunctionKey = true,
                     enabled = pinInput.isNotEmpty() && enabled,
                     onClick = {
@@ -2023,16 +2034,16 @@ fun ApplePinKeyboard(
 
         if (showDots) {
             Text(
-                text = "Secure Vault Access",
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                text = "Secured with Knox Standard",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
             )
         }
     }
 }
 
 // ============================================================================
-// 3. CLAY BUTTON COMPONENT
+// 3. SAMSUNG ONE UI KEYPAD BUTTON
 // ============================================================================
 
 @Composable
@@ -2048,18 +2059,16 @@ fun ClayKeypadButton(
 ) {
     var isPressed by remember { mutableStateOf(false) }
 
-    // Animate scale on press
     val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.92f else 1f,
-        animationSpec = spring(dampingRatio = 0.5f, stiffness = 400f),
+        targetValue = if (isPressed) 0.93f else 1f,
+        animationSpec = spring(dampingRatio = 0.55f, stiffness = 500f),
         label = "scale"
     )
 
-    // Adaptive Colors
-    val isDark = MaterialTheme.colorScheme.surface == AppleColors.DarkSurface || MaterialTheme.colorScheme.background == AppleColors.DarkBackground
-    val baseColor = if (isDark) AppleColors.DarkCard else Color(0xFFF0F0F3)
-    val textColor = if (isFunctionKey) AppleColors.SystemRed else if (isDark) AppleColors.DarkText else Color(0xFF1C1C1E)
-    val contentAlpha = if (enabled) 1f else 0.3f
+    val isDark = MaterialTheme.colorScheme.surface == OneUIColors.DarkSurface || MaterialTheme.colorScheme.background == OneUIColors.DarkBackground
+    val buttonBg = if (isDark) OneUIColors.DarkCard else OneUIColors.LightSurface
+    val textColor = if (isFunctionKey) OneUIColors.SystemRed else (if (isDark) OneUIColors.DarkText else OneUIColors.LightText)
+    val contentAlpha = if (enabled) 1f else 0.35f
 
     Box(
         modifier = modifier
@@ -2068,6 +2077,17 @@ fun ClayKeypadButton(
                 scaleX = scale
                 scaleY = scale
             }
+            .shadow(
+                elevation = if (isPressed) 1.dp else (if (isDark) 0.dp else 2.dp),
+                shape = CircleShape,
+                spotColor = Color.Black.copy(alpha = 0.08f)
+            )
+            .border(
+                width = 0.5.dp,
+                color = if (isDark) OneUIColors.DarkSeparator else OneUIColors.LightSeparator,
+                shape = CircleShape
+            )
+            .background(buttonBg, CircleShape)
             .pointerInput(enabled) {
                 detectTapGestures(
                     onPress = {
@@ -2082,51 +2102,19 @@ fun ClayKeypadButton(
             },
         contentAlignment = Alignment.Center
     ) {
-        // 1. The Clay Shadow Layer
-        // When pressed, we reduce the shadow spread to simulate the button moving "down" into the surface
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .clayShadow(
-                    color = baseColor,
-                    spread = if (isPressed) 2.dp else 6.dp,
-                    borderRadius = size / 2
-                )
-                .background(baseColor, CircleShape)
-        )
-
-        // 2. Subtle Surface Gradient (Simulates 3D curvature/inflation)
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(4.dp) // Inset slightly
-                .background(
-                    brush = Brush.radialGradient(
-                        colors = listOf(
-                            if (isDark) Color.White.copy(alpha = 0.12f) else Color.White.copy(alpha = 0.6f),
-                            Color.Transparent
-                        ),
-                        center = Offset(x = size.value * 0.3f, y = size.value * 0.3f), // Light source top-left
-                        radius = size.value * 0.8f
-                    ),
-                    shape = CircleShape
-                )
-        )
-
-        // 3. Content
         if (icon != null) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
                 tint = iconColor.copy(alpha = contentAlpha),
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(26.dp)
             )
         } else {
             Text(
                 text = text,
                 style = MaterialTheme.typography.headlineMedium.copy(
                     fontSize = 28.sp,
-                    fontWeight = FontWeight.SemiBold
+                    fontWeight = FontWeight.Medium
                 ),
                 color = textColor.copy(alpha = contentAlpha)
             )
@@ -2184,16 +2172,16 @@ fun LockSetupScreen(
 
             Text(
                 text = when (authType) {
-                    "biometric" -> "Set Fallback PIN"
-                    "pin" -> "Set Your PIN"
-                    else -> "Set Your Password"
+                    "biometric" -> "Set fallback PIN"
+                    "pin" -> "Set your PIN"
+                    else -> "Set your password"
                 },
-                style = MaterialTheme.typography.headlineLarge.copy(
-                    fontSize = 32.sp,
+                style = MaterialTheme.typography.displayMedium.copy(
+                    fontSize = 34.sp,
                     letterSpacing = (-0.5).sp
                 ),
                 color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.W700
+                fontWeight = FontWeight.Light
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -2488,7 +2476,7 @@ fun LoginScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 24.dp)
         ) {
             Spacer(modifier = Modifier.height(80.dp))
 
@@ -2560,12 +2548,12 @@ fun LoginScreen(
 
             Text(
                 text = displayName,
-                style = MaterialTheme.typography.headlineLarge.copy(
+                style = MaterialTheme.typography.displayMedium.copy(
                     fontSize = 34.sp,
                     letterSpacing = (-0.5).sp
                 ),
                 color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.W700
+                fontWeight = FontWeight.Light
             )
 
             Spacer(modifier = Modifier.height(48.dp))
@@ -2775,7 +2763,7 @@ fun ApplePinEntryScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 24.dp)
         ) {
             Spacer(modifier = Modifier.height(80.dp))
 
@@ -2886,7 +2874,7 @@ fun RecoveryScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(60.dp))
@@ -2912,13 +2900,13 @@ fun RecoveryScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Account Recovery",
-                    style = MaterialTheme.typography.headlineLarge.copy(
-                        fontSize = 32.sp,
+                    text = "Account recovery",
+                    style = MaterialTheme.typography.displayMedium.copy(
+                        fontSize = 34.sp,
                         letterSpacing = (-0.5).sp
                     ),
                     color = MaterialTheme.colorScheme.onBackground,
-                    fontWeight = FontWeight.W700
+                    fontWeight = FontWeight.Light
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -3114,7 +3102,7 @@ fun MainAppScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp, vertical = 16.dp),
+                        .padding(horizontal = 24.dp, vertical = 14.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -3202,17 +3190,17 @@ fun MainAppScreen(
             }
         },
         bottomBar = {
-            // Apple-style Tab Bar
+            // Samsung One UI Bottom Navigation Bar (26dp top rounded corners)
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
                     .shadow(
                         elevation = 8.dp,
-                        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+                        shape = RoundedCornerShape(topStart = 26.dp, topEnd = 26.dp),
                         spotColor = Color.Black.copy(alpha = 0.08f)
                     ),
-                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.98f),
-                shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
+                color = MaterialTheme.colorScheme.surface,
+                shape = RoundedCornerShape(topStart = 26.dp, topEnd = 26.dp)
             ) {
                 NavigationBar(
                     containerColor = Color.Transparent,
@@ -3240,7 +3228,7 @@ fun MainAppScreen(
                             selectedTextColor = AppleColors.SystemBlue,
                             unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            indicatorColor = AppleColors.SystemBlue.copy(alpha = 0.1f)
+                            indicatorColor = OneUIColors.Primary.copy(alpha = 0.15f)
                         )
                     )
                     NavigationBarItem(
@@ -3279,7 +3267,7 @@ fun MainAppScreen(
                             selectedTextColor = AppleColors.SystemBlue,
                             unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            indicatorColor = AppleColors.SystemBlue.copy(alpha = 0.1f)
+                            indicatorColor = OneUIColors.Primary.copy(alpha = 0.15f)
                         )
                     )
                     NavigationBarItem(
@@ -3303,7 +3291,7 @@ fun MainAppScreen(
                             selectedTextColor = AppleColors.SystemBlue,
                             unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            indicatorColor = AppleColors.SystemBlue.copy(alpha = 0.1f)
+                            indicatorColor = OneUIColors.Primary.copy(alpha = 0.15f)
                         )
                     )
                     NavigationBarItem(
@@ -3327,7 +3315,7 @@ fun MainAppScreen(
                             selectedTextColor = AppleColors.SystemBlue,
                             unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            indicatorColor = AppleColors.SystemBlue.copy(alpha = 0.1f)
+                            indicatorColor = OneUIColors.Primary.copy(alpha = 0.15f)
                         )
                     )
                 }
@@ -3343,17 +3331,17 @@ fun MainAppScreen(
                         defaultElevation = 4.dp,
                         pressedElevation = 8.dp
                     ),
-                    shape = RoundedCornerShape(16.dp)
+                    shape = RoundedCornerShape(26.dp)
                 ) {
                     Row(
-                        modifier = Modifier.padding(horizontal = 16.dp),
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
                             Icons.Filled.Add,
                             contentDescription = "Add",
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(22.dp)
                         )
                         Text(
                             "Import",
@@ -3787,7 +3775,7 @@ fun RecycleBinTab(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 24.dp)
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -3799,12 +3787,12 @@ fun RecycleBinTab(
             ) {
                 Column {
                     Text(
-                        text = "Recycle Bin",
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            fontSize = 28.sp,
-                            letterSpacing = (-0.4).sp
+                        text = "Recycle bin",
+                        style = MaterialTheme.typography.displayMedium.copy(
+                            fontSize = 34.sp,
+                            letterSpacing = (-0.5).sp
                         ),
-                        fontWeight = FontWeight.W700
+                        fontWeight = FontWeight.Light
                     )
 
                     Spacer(modifier = Modifier.height(4.dp))
@@ -4074,10 +4062,10 @@ fun AppleRecycleBinGridItem(
             .aspectRatio(1f)
             .shadow(
                 elevation = 2.dp,
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(20.dp),
                 spotColor = Color.Black.copy(alpha = 0.06f)
             ),
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
@@ -4230,11 +4218,11 @@ fun AppleRecycleBinListItem(
         modifier = Modifier
             .fillMaxWidth()
             .shadow(
-                elevation = 1.dp,
-                shape = RoundedCornerShape(12.dp),
+                elevation = 2.dp,
+                shape = RoundedCornerShape(20.dp),
                 spotColor = Color.Black.copy(alpha = 0.05f)
             ),
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
@@ -4361,7 +4349,7 @@ fun PasswordsTab(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 24.dp)
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -4374,11 +4362,11 @@ fun PasswordsTab(
                 Column {
                     Text(
                         text = "Passwords",
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            fontSize = 28.sp,
-                            letterSpacing = (-0.4).sp
+                        style = MaterialTheme.typography.displayMedium.copy(
+                            fontSize = 34.sp,
+                            letterSpacing = (-0.5).sp
                         ),
-                        fontWeight = FontWeight.W700
+                        fontWeight = FontWeight.Light
                     )
 
                     Spacer(modifier = Modifier.height(4.dp))
@@ -4405,8 +4393,8 @@ fun PasswordsTab(
                         defaultElevation = 2.dp,
                         pressedElevation = 4.dp
                     ),
-                    shape = RoundedCornerShape(14.dp),
-                    modifier = Modifier.size(50.dp)
+                    shape = RoundedCornerShape(26.dp),
+                    modifier = Modifier.size(52.dp)
                 ) {
                     Icon(
                         Icons.Filled.Add,
@@ -4744,10 +4732,10 @@ fun AddPasswordDialog(
                 .wrapContentHeight()
                 .shadow(
                     elevation = 16.dp,
-                    shape = RoundedCornerShape(24.dp),
+                    shape = RoundedCornerShape(26.dp),
                     spotColor = Color.Black.copy(alpha = 0.12f)
                 ),
-            shape = RoundedCornerShape(24.dp),
+            shape = RoundedCornerShape(26.dp),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface
             ),
@@ -4932,7 +4920,7 @@ fun WalletTab(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 24.dp)
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -4945,11 +4933,11 @@ fun WalletTab(
                 Column {
                     Text(
                         text = "Wallet",
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            fontSize = 28.sp,
-                            letterSpacing = (-0.4).sp
+                        style = MaterialTheme.typography.displayMedium.copy(
+                            fontSize = 34.sp,
+                            letterSpacing = (-0.5).sp
                         ),
-                        fontWeight = FontWeight.W700
+                        fontWeight = FontWeight.Light
                     )
 
                     Spacer(modifier = Modifier.height(4.dp))
@@ -4976,8 +4964,8 @@ fun WalletTab(
                         defaultElevation = 2.dp,
                         pressedElevation = 4.dp
                     ),
-                    shape = RoundedCornerShape(14.dp),
-                    modifier = Modifier.size(50.dp)
+                    shape = RoundedCornerShape(26.dp),
+                    modifier = Modifier.size(52.dp)
                 ) {
                     Icon(
                         Icons.Filled.Add,
@@ -5174,11 +5162,11 @@ fun AppleWalletCard(
             .fillMaxWidth()
             .height(230.dp)
             .shadow(
-                elevation = 12.dp,
-                shape = RoundedCornerShape(20.dp),
-                spotColor = Color.Black.copy(alpha = 0.3f)
+                elevation = 6.dp,
+                shape = RoundedCornerShape(26.dp),
+                spotColor = Color.Black.copy(alpha = 0.15f)
             ),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(26.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -5595,8 +5583,8 @@ fun AddCardDialog(
             modifier = Modifier
                 .fillMaxWidth(0.95f)
                 .fillMaxHeight(0.9f)
-                .shadow(16.dp, RoundedCornerShape(24.dp)),
-            shape = RoundedCornerShape(24.dp),
+                .shadow(16.dp, RoundedCornerShape(26.dp)),
+            shape = RoundedCornerShape(26.dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
         ) {
             Column(
@@ -6123,10 +6111,10 @@ fun CardDetailsDialog(
                 .wrapContentHeight()
                 .shadow(
                     elevation = 16.dp,
-                    shape = RoundedCornerShape(24.dp),
+                    shape = RoundedCornerShape(26.dp),
                     spotColor = Color.Black.copy(alpha = 0.12f)
                 ),
-            shape = RoundedCornerShape(24.dp),
+            shape = RoundedCornerShape(26.dp),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface
             ),
@@ -6355,10 +6343,10 @@ fun SettingsDialog(
                 .fillMaxHeight(0.85f)
                 .shadow(
                     elevation = 16.dp,
-                    shape = RoundedCornerShape(24.dp),
+                    shape = RoundedCornerShape(26.dp),
                     spotColor = Color.Black.copy(alpha = 0.12f)
                 ),
-            shape = RoundedCornerShape(24.dp),
+            shape = RoundedCornerShape(26.dp),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface
             ),
@@ -6407,7 +6395,7 @@ fun SettingsDialog(
                     modifier = Modifier
                         .weight(1f)
                         .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 20.dp, vertical = 16.dp),
+                        .padding(horizontal = 24.dp, vertical = 14.dp),
                     verticalArrangement = Arrangement.spacedBy(24.dp)
                 ) {
                     // BACKUP & RESTORE Section
